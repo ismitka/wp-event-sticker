@@ -1,0 +1,100 @@
+/*
+ * The MIT License
+ *
+ * Copyright 2025 Ivan Smitka <ivan at stimulus dot cz>.
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ *
+ */
+.EventSticker {
+  position: fixed;
+  z-index: 99;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+}
+.EventSticker .Event {
+  transition-property: margin-left;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in-out;
+  width: 350px;
+  margin-left: 200px;
+  position: relative;
+  margin-bottom: 1rem;
+  font-size: 0.75rem;
+  background-color: #FFFFFF;
+  box-shadow: 0 0 2px #3b3d40;
+  padding: 0.25rem 0.5rem;
+  display: flex;
+  align-items: center;
+}
+.EventSticker .Event.open {
+  margin-left: 0;
+}
+.EventSticker .Event.expanded {
+  margin-left: -150px;
+}
+.EventSticker .Event.suspended {
+  display: none;
+}
+.EventSticker .Event > div {
+  padding: 0 0.5rem;
+}
+.EventSticker .Event .close {
+  position: absolute;
+  display: block;
+  top: -0.5rem;
+  left: -0.5rem;
+  background-color: #FFFFFF;
+  color: #ad2828;
+  text-decoration: none;
+  width: 1rem;
+  height: 1rem;
+  box-shadow: 0 0 2px #3b3d40;
+  line-height: 1rem;
+  text-align: center;
+}
+.EventSticker .Event .logo {
+  width: 50px;
+}
+.EventSticker .Event .logo img {
+  width: 100%;
+  height: auto;
+}
+.EventSticker .Event .content {
+  width: 150px;
+  text-align: center;
+  font-weight: bold;
+}
+.EventSticker .Event .extension {
+  width: 150px;
+  text-align: center;
+}
+.EventSticker .Event .extension .link {
+  display: inline-block;
+  background-color: #ad2828;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/*# sourceMappingURL=event-sticker.css.map */

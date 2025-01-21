@@ -1,0 +1,16 @@
+{
+  "name": "wp-event-sticker",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build --minify false",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.32",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.8"
+  }
+}
