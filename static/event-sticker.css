@@ -34,7 +34,7 @@
   transition-property: margin-left;
   transition-duration: 0.5s;
   transition-timing-function: ease-in-out;
-  width: 310px;
+  width: 320px;
   margin-left: 234px;
   position: relative;
   margin-bottom: 1rem;
@@ -49,7 +49,7 @@
   margin-left: 0;
 }
 .EventSticker .Event.expanded {
-  margin-left: -100px;
+  margin-left: -110px;
 }
 .EventSticker .Event.suspended {
   display: none;
@@ -81,7 +81,7 @@
   color: #666d70;
 }
 .EventSticker .Event .extension {
-  width: 100px;
+  width: 110px;
   text-align: center;
   padding: 0 1rem 0 0.5rem;
 }
