@@ -1,8 +1,7 @@
-(cd ../ && zip -r wp-golf-score/wp-golf-score.zip \
-  wp-golf-score/index.html \
-  wp-golf-score/LICENSE \
-  wp-golf-score/proxy.php \
-  wp-golf-score/README.md \
-  wp-golf-score/wp-golf-score.php \
-  wp-golf-score/dist \
-  wp-golf-score/static)
+(cd ../ && zip -r wp-event-sticker/wp-event-sticker.zip \
+  wp-event-sticker/index.html \
+  wp-event-sticker/LICENSE \
+  wp-event-sticker/README.md \
+  wp-event-sticker/wp-event-sticker.php \
+  wp-event-sticker/dist \
+  wp-event-sticker/static)
