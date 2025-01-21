@@ -381,3 +381,4 @@ wp-config.php
 /node_modules/vite/README.md
 /node_modules/.package-lock.json
 /package-lock.json
+/wp-event-sticker.zip
