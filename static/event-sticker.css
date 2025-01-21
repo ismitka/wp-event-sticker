@@ -28,14 +28,14 @@
   z-index: 99;
   bottom: 0;
   right: 0;
-  width: 200px;
+  width: 230px;
 }
 .EventSticker .Event {
   transition-property: margin-left;
   transition-duration: 0.5s;
   transition-timing-function: ease-in-out;
-  width: 350px;
-  margin-left: 200px;
+  width: 380px;
+  margin-left: 230px;
   position: relative;
   margin-bottom: 1rem;
   font-size: 0.75rem;
@@ -54,25 +54,20 @@
 .EventSticker .Event.suspended {
   display: none;
 }
-.EventSticker .Event > div {
-  padding: 0 0.5rem;
-}
 .EventSticker .Event .close {
   position: absolute;
   display: block;
-  top: -0.5rem;
-  left: -0.5rem;
-  background-color: #FFFFFF;
+  top: 0;
+  left: -1.5rem;
   color: #ad2828;
   text-decoration: none;
-  width: 1rem;
-  height: 1rem;
-  box-shadow: 0 0 2px #3b3d40;
-  line-height: 1rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
   text-align: center;
 }
 .EventSticker .Event .logo {
-  width: 50px;
+  width: 80px;
 }
 .EventSticker .Event .logo img {
   width: 100%;
@@ -81,7 +76,7 @@
 .EventSticker .Event .content {
   width: 150px;
   text-align: center;
-  font-weight: bold;
+  line-height: 1.5;
 }
 .EventSticker .Event .extension {
   width: 150px;

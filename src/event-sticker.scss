@@ -24,25 +24,25 @@
  *
  */
 
-$EventStickerWidth: 200px;
-$EventStickerLogoWidth: 50px;
+$EventStickerLogoWidth: 80px;
+$EventStickerContentWidth: 150px;
 $EventStickerExpansion: 150px;
-$EventStickerCloseSize: 1rem;
+$EventStickerCloseSize: 1.5rem;
 
 .EventSticker {
     position: fixed;
     z-index: 99;
     bottom: 0;
     right: 0;
-    width: #{$EventStickerWidth};
+    width: #{$EventStickerLogoWidth + $EventStickerContentWidth};
 
     .Event {
         transition-property: margin-left;
         transition-duration: 0.5s;
         transition-timing-function: ease-in-out;
 
-        width: #{$EventStickerWidth + $EventStickerExpansion};
-        margin-left: $EventStickerWidth;
+        width: #{$EventStickerLogoWidth + $EventStickerContentWidth + $EventStickerExpansion};
+        margin-left: #{$EventStickerLogoWidth + $EventStickerContentWidth};
 
         &.open {
             margin-left: 0;
@@ -66,21 +66,15 @@ $EventStickerCloseSize: 1rem;
         display: flex;
         align-items: center;
 
-        > div {
-            padding: 0 0.5rem;
-        }
-
         .close {
             position: absolute;
             display: block;
-            top: #{-$EventStickerCloseSize / 2};
-            left: #{-$EventStickerCloseSize / 2};
-            background-color: #FFFFFF;
+            top: 0;
+            left: #{-$EventStickerCloseSize};
             color: #ad2828;
             text-decoration: none;
             width: $EventStickerCloseSize;
             height: $EventStickerCloseSize;
-            box-shadow: 0 0 2px #3b3d40;
             line-height: $EventStickerCloseSize;
             text-align: center;
         }
@@ -95,9 +89,9 @@ $EventStickerCloseSize: 1rem;
         }
 
         .content {
-            width: #{$EventStickerWidth - $EventStickerLogoWidth};
+            width: #{$EventStickerContentWidth};
             text-align: center;
-            font-weight: bold;
+            line-height: 1.5;
         }
 
         .extension {

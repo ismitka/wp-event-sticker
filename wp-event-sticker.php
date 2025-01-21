@@ -39,8 +39,9 @@ class WP_EventSticker {
 
 	const UPDATE_URI = "https://www.smitka.net/wp-plugin/wp-event-sticker";
 	const EVENT_STICKER_PRIORITY = "EventSticker_Priority";
-	const EVENT_STICKER_DAYS_BEFORE = 'EventSticker_DaysBefore';
-	const EVENT_STICKER_URL = 'URL_Turnaj';
+	const EVENT_STICKER_DAYS_BEFORE = "EventSticker_DaysBefore";
+	const EVENT_STICKER_URL = "URL_Turnaj";
+
 
 	const CUSTOM_ATTRS = [
 		self::EVENT_STICKER_PRIORITY    => null,
@@ -87,7 +88,13 @@ class WP_EventSticker {
 
 			}, 9999, 3 );
 
-			if ( $_SERVER["REQUEST_METHOD"] === "GET" && in_array( "post_type", array_keys( $_GET ) ) && $_GET["post_type"] === "event" && $_SERVER["DOCUMENT_URI"] === "/wp-admin/post-new.php" ) {
+			if ( $_SERVER["REQUEST_METHOD"] === "GET"
+			     && in_array( "post_type", array_keys( $_GET ) )
+			     && $_GET["post_type"] === "event"
+			     && in_array( $_SERVER["DOCUMENT_URI"], [
+					"/wp-admin/post-new.php",
+					"/wp-admin/edit.php"
+				] ) ) {
 				if ( $eventAttrs = em_get_attributes() ) {
 					$add    = false;
 					$names  = $eventAttrs["names"];
@@ -146,34 +153,38 @@ class WP_EventSticker {
 		$self = new self();
 		print "<section class='EventSticker' style='display: none;' data-event-stickers>\n";
 		foreach ( $self->getData( 14 ) as $event ) {
-			$title = explode( " ", $event->name );
+			$title = explode( " ", $event->event_name );
+			$place = null;
+			$logo  = null;
 			if ( count( $title ) > 2 ) {
 				$title = implode( " ", array_slice( $title, 0, 2 ) );
 			} else {
 				$title = $event->name;
 			}
-			$signUp       = in_array( self::EVENT_STICKER_URL, $event->event_attributes ) ? $event->event_attributes[ self::EVENT_STICKER_URL ] : null;
-			$logo      = null;
-			$logoSmall = null;
+			if ( $location = $event->get_location() ) {
+				$place = $location->location_name;
+			}
+			$content = array_filter( [
+				$event->start()->format( "j. n. Y" ),
+				$title,
+				$place
+			] );
+			$signUp  = array_key_exists( self::EVENT_STICKER_URL, $event->event_attributes ) ? $event->event_attributes[ self::EVENT_STICKER_URL ] : null;
 			foreach ( $event->get_categories() as $category ) {
 				/**
 				 * @var \EM_Category $category
 				 */
-				if ( $imageUrl = $category->get_image_url() ) {
-					//$logo = "<img src='{$imageUrl}' alt='{$category->name}'>";
-					if ( $slug = $category->slug ) {
-						$logo = "<img src='/wp-content/uploads/category/{$slug}.png' alt='{$category->name}'>";
-					}
+				if ( $slug = $category->slug ) {
+					$logo = "<img src='/wp-content/uploads/category/{$slug}.png' alt='{$category->name}'>";
 				}
 			} ?>
             <div class="Event" data-id="<?= $event->id ?>">
-                <a href="#" class="close">X</a>
+                <a href="#" class="close"><i class="fas fa-times"></i></a>
                 <div class="logo">
 					<?= $logo ?>
                 </div>
                 <div class="content">
-					<?= $event->start()->format( "d.m.Y" ) ?><br>
-					<?= $title ?>
+					<?= implode( "<br>", $content ) ?>
                 </div>
                 <div class="extension">
 					<?php if ( $signUp ) { ?><a href="<?= $signUp ?>" class="link">Přihlásit se</a><?php } ?>
