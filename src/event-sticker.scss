@@ -24,9 +24,9 @@
  *
  */
 
-$EventStickerLogoWidth: 80px;
-$EventStickerContentWidth: 150px;
-$EventStickerExpansion: 150px;
+$EventStickerLogoWidth: 90px;
+$EventStickerContentWidth: 120px;
+$EventStickerExpansion: 100px;
 $EventStickerCloseSize: 1.5rem;
 
 .EventSticker {
@@ -81,29 +81,33 @@ $EventStickerCloseSize: 1.5rem;
 
         .logo {
             width: $EventStickerLogoWidth;
+            padding: 0 1rem 0 0.25rem ;
 
             img {
                 width: 100%;
                 height: auto;
+                display: block;
             }
         }
 
         .content {
             width: #{$EventStickerContentWidth};
-            text-align: center;
-            line-height: 1.5;
+            line-height: 1.25;
         }
 
         .extension {
             width: #{$EventStickerExpansion};
             text-align: center;
+            padding: 0 0.5rem;
 
             .link {
                 display: inline-block;
                 background-color: #ad2828;
                 color: #ffffff;
+                font-size: 0.75rem;
+                line-height: 1.25;
                 text-decoration: none;
-                padding: 0.25rem 0.5rem;
+                padding: 0.25rem 1rem;
                 white-space: nowrap;
                 text-align: center;
             }

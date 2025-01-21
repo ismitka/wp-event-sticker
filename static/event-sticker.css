@@ -28,14 +28,14 @@
   z-index: 99;
   bottom: 0;
   right: 0;
-  width: 230px;
+  width: 210px;
 }
 .EventSticker .Event {
   transition-property: margin-left;
   transition-duration: 0.5s;
   transition-timing-function: ease-in-out;
-  width: 380px;
-  margin-left: 230px;
+  width: 310px;
+  margin-left: 210px;
   position: relative;
   margin-bottom: 1rem;
   font-size: 0.75rem;
@@ -49,7 +49,7 @@
   margin-left: 0;
 }
 .EventSticker .Event.expanded {
-  margin-left: -150px;
+  margin-left: -100px;
 }
 .EventSticker .Event.suspended {
   display: none;
@@ -67,27 +67,31 @@
   text-align: center;
 }
 .EventSticker .Event .logo {
-  width: 80px;
+  width: 90px;
+  padding: 0 1rem 0 0.25rem;
 }
 .EventSticker .Event .logo img {
   width: 100%;
   height: auto;
+  display: block;
 }
 .EventSticker .Event .content {
-  width: 150px;
-  text-align: center;
-  line-height: 1.5;
+  width: 120px;
+  line-height: 1.25;
 }
 .EventSticker .Event .extension {
-  width: 150px;
+  width: 100px;
   text-align: center;
+  padding: 0 0.5rem;
 }
 .EventSticker .Event .extension .link {
   display: inline-block;
   background-color: #ad2828;
   color: #ffffff;
+  font-size: 0.75rem;
+  line-height: 1.25;
   text-decoration: none;
-  padding: 0.25rem 0.5rem;
+  padding: 0.25rem 1rem;
   white-space: nowrap;
   text-align: center;
 }
