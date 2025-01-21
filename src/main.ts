@@ -39,38 +39,38 @@ export namespace WpEventSticker {
         if (el) {
             const wrapper = $(el);
             wrapper.removeAttr("style");
-            settings.suspended = JSON.parse(sessionStorage.getItem("WpEventStickerSuspended") ?? "[]");
-            if (settings.suspended) {
-                settings.suspended.forEach((id) => {
-                    $(".Event[data-id=" + id + "]", wrapper).addClass("suspended");
-                });
-            }
+            setTimeout(() => {
+                settings.suspended = JSON.parse(sessionStorage.getItem("WpEventStickerSuspended") ?? "[]");
+                if (settings.suspended) {
+                    settings.suspended.forEach((id) => {
+                        $(".Event[data-id=" + id + "]", wrapper).addClass("suspended");
+                    });
+                }
 
-            $(".Event .close", wrapper).click((e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                const event = $(e.currentTarget).parent();
-                event.fadeOut(500, () => {
-                    event.addClass("suspended");
+                $(".Event .close", wrapper).click((e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const event = $(e.currentTarget).parent();
+                    event.fadeOut(500, () => {
+                        event.addClass("suspended");
+                    });
+                    settings.suspended?.push(event.data("id"));
+                    sessionStorage.setItem("WpEventStickerSuspended", JSON.stringify(settings.suspended));
                 });
-                settings.suspended?.push(event.data("id"));
-                sessionStorage.setItem("WpEventStickerSuspended", JSON.stringify(settings.suspended));
-            }).addClass("open");
-            $(".Event", wrapper).click((e) => {
-                const event = $(e.currentTarget);
-                event.toggleClass("expanded");
-            }).addClass("open");
+                $(".Event", wrapper).click((e) => {
+                    const event = $(e.currentTarget);
+                    event.toggleClass("expanded");
+                }).addClass("open");
+
+            }, 2000);
         }
     }
-
 }
 
 if (document.readyState !== 'loading') {
-    console.log("Loading", document.readyState);
     WpEventSticker.init();
 } else {
     document.addEventListener('DOMContentLoaded', () => {
-        console.log("Loaded", document.readyState);
         WpEventSticker.init();
     });
 }

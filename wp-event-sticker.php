@@ -187,7 +187,7 @@ class WP_EventSticker {
 					<?= implode( "<br>", $content ) ?>
                 </div>
                 <div class="extension">
-					<?php if ( $signUp ) { ?><a href="<?= $signUp ?>" class="link">Přihlásit se</a><?php } ?>
+					<?php if ( $signUp ) { ?><a href="<?= $signUp ?>" class="link" target="_blank">Přihlásit se</a><?php } ?>
                 </div>
             </div>
 			<?php

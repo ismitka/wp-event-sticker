@@ -27,7 +27,7 @@
 $EventStickerLogoWidth: 90px;
 $EventStickerContentWidth: 120px;
 $EventStickerExpansion: 100px;
-$EventStickerCloseSize: 1.5rem;
+$EventStickerCloseSize: 24px;
 
 .EventSticker {
     position: fixed;
@@ -42,7 +42,7 @@ $EventStickerCloseSize: 1.5rem;
         transition-timing-function: ease-in-out;
 
         width: #{$EventStickerLogoWidth + $EventStickerContentWidth + $EventStickerExpansion};
-        margin-left: #{$EventStickerLogoWidth + $EventStickerContentWidth};
+        margin-left: #{$EventStickerLogoWidth + $EventStickerContentWidth + $EventStickerCloseSize};
 
         &.open {
             margin-left: 0;
@@ -93,12 +93,13 @@ $EventStickerCloseSize: 1.5rem;
         .content {
             width: #{$EventStickerContentWidth};
             line-height: 1.25;
+            color: #666d70;
         }
 
         .extension {
             width: #{$EventStickerExpansion};
             text-align: center;
-            padding: 0 0.5rem;
+            padding: 0 1rem 0 0.5rem;
 
             .link {
                 display: inline-block;

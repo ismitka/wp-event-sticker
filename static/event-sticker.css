@@ -35,7 +35,7 @@
   transition-duration: 0.5s;
   transition-timing-function: ease-in-out;
   width: 310px;
-  margin-left: 210px;
+  margin-left: 234px;
   position: relative;
   margin-bottom: 1rem;
   font-size: 0.75rem;
@@ -58,12 +58,12 @@
   position: absolute;
   display: block;
   top: 0;
-  left: -1.5rem;
+  left: -24px;
   color: #ad2828;
   text-decoration: none;
-  width: 1.5rem;
-  height: 1.5rem;
-  line-height: 1.5rem;
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
   text-align: center;
 }
 .EventSticker .Event .logo {
@@ -78,11 +78,12 @@
 .EventSticker .Event .content {
   width: 120px;
   line-height: 1.25;
+  color: #666d70;
 }
 .EventSticker .Event .extension {
   width: 100px;
   text-align: center;
-  padding: 0 0.5rem;
+  padding: 0 1rem 0 0.5rem;
 }
 .EventSticker .Event .extension .link {
   display: inline-block;
