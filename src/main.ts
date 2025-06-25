@@ -61,7 +61,9 @@ export namespace WpEventSticker {
                     const event = $(e.currentTarget);
                     event.toggleClass("expanded");
                 }).addClass("open");
-
+                if (window.innerWidth > 1280) {
+                    $(".Event", wrapper).addClass("expanded");
+                }
             }, 2000);
         }
     }

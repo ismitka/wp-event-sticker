@@ -3,7 +3,7 @@
  * Plugin Name: Event Sticker Widget
  * Plugin URI: http://www.smitka.net/event-sticker
  * Description: Show Events as Side Stickers
- * Version: 1.2
+ * Version: 1.3
  * Author: Ivan Smitka
  * Author URI: http://www.smitka.net
  *
