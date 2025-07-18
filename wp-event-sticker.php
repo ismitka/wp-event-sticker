@@ -91,7 +91,7 @@ class WP_EventSticker {
 			if ( $_SERVER["REQUEST_METHOD"] === "GET"
 			     && in_array( "post_type", array_keys( $_GET ) )
 			     && $_GET["post_type"] === "event"
-			     && in_array( $_SERVER["DOCUMENT_URI"], [
+			     && in_array( $_SERVER["REQUEST_URI"], [
 					"/wp-admin/post-new.php",
 					"/wp-admin/edit.php"
 				] ) ) {
