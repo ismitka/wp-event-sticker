@@ -1,6 +1,6 @@
 #!/bin/bash
 sass src/event-sticker.scss static/event-sticker.css
-VERSION=$(git tag -l)
+VERSION=$(git tag -l | sort -r | head -1)
 echo "${VERSION}"
 sed -i -E "s/^ \* Version\: .*$/ * Version: ${VERSION}/g" wp-event-sticker.php
 (cd ../ && zip -r wp-event-sticker/${VERSION}.zip \
