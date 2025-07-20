@@ -63,30 +63,31 @@ class WP_EventSticker {
 				'render'
 			] );
 		} else {
-			//add admin action hook
+			/* SelfHosted Updater Section */
+			add_filter( 'http_request_host_is_external', '__return_true' );
 			add_filter( 'update_plugins_www.smitka.net', function ( $update, $plugin_data, $plugin_file, $locales ) {
-				if ( $plugin_file == plugin_basename( __FILE__ ) ) {
-					$update = self::getUpdate( $plugin_data['UpdateURI'] );
+				if ( $plugin_file === plugin_basename( __FILE__ ) ) {
+					return self::getUpdate( $plugin_data['UpdateURI'] );
 				}
 
-				return $update;
+				return false;
 			}, 10, 4 );
-			add_filter( 'plugins_api', function ( $res, $action, $args ) {
-				if ( 'plugin_information' !== $action ) {
-					return $res;
-				}
+			add_filter( 'plugins_api', static function ( $res, $action, $args ) {
 				if ( plugin_basename( __DIR__ ) !== $args->slug ) {
 					return $res;
 				}
 
-				$update             = self::getUpdate( self::UPDATE_URI );
-				$res                = json_decode( json_encode( $update ), false );
-				$res->sections      = $update["sections"];
-				$res->download_link = $update["package"];
+				if ( $action !== 'plugin_information' ) {
+					return $res;
+				}
+
+				$res                = self::getUpdate( self::UPDATE_URI );
+				$res->download_link = $res->package;
 
 				return $res;
 
 			}, 9999, 3 );
+			/* End of SelfHosted Updater Section */
 
 			if ( $_SERVER["REQUEST_METHOD"] === "GET"
 			     && in_array( "post_type", array_keys( $_GET ) )
@@ -123,12 +124,31 @@ class WP_EventSticker {
 	 *
 	 * @return mixed
 	 */
-	private static function getUpdate( $update_URI ) {
-		$request      = wp_remote_get( $update_URI );
-		$request_body = wp_remote_retrieve_body( $request );
-		$update       = json_decode( $request_body, true );
+	private static function getUpdate( $update_URI ): mixed {
+		try {
+			$request = wp_remote_get( $update_URI, [
+				'timeout' => 10,
+				'headers' => [
+					'Accept' => 'application/json'
+				]
+			] );
+			if (
+				is_wp_error( $request )
+				|| wp_remote_retrieve_response_code( $request ) !== 200
+				|| empty( $request_body = wp_remote_retrieve_body( $request ) )
+			) {
+				return false;
+			}
 
-		return $update;
+			$update = json_decode( $request_body, false );
+			if ( ! is_array( $update->sections ) && is_object( $update->sections ) ) {
+				$update->sections = (array) $update->sections;
+			}
+
+			return $update;
+		} catch ( Throwable $e ) {
+			return false;
+		}
 	}
 
 	/**
